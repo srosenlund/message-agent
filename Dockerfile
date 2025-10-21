@@ -10,7 +10,10 @@ RUN apk add --no-cache \
     git \
     build-base \
     openssl-dev \
-    sqlite-dev
+    sqlite-dev \
+    clang \
+    clang-dev \
+    llvm-dev
 
 # Build Conduit (pinned version)
 WORKDIR /build/conduit
