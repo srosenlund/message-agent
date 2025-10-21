@@ -1,0 +1,65 @@
+# ============================================================================
+# SLIPLANE ENVIRONMENT VARIABLES - COPY & PASTE
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# REQUIRED (Minimum to Start)
+# ----------------------------------------------------------------------------
+
+MATRIX_SERVER_NAME=YOUR_APP_NAME.sliplane.app
+REGISTRATION_TOKEN=43228ae93a8a7948f9abbdc5fd4323c95c3fd49aaef3a3af2159cfaa77d5dd14
+
+# ----------------------------------------------------------------------------
+# OPTIONAL - AI Features (Add when ready)
+# ----------------------------------------------------------------------------
+
+OPENAI_API_KEY=sk-proj-YOUR_KEY_HERE
+OPENAI_MODEL=gpt-4-turbo-preview
+
+# ----------------------------------------------------------------------------
+# OPTIONAL - Outlook Integration (Add when ready)
+# ----------------------------------------------------------------------------
+
+GRAPH_CLIENT_ID=YOUR_AZURE_CLIENT_ID
+GRAPH_CLIENT_SECRET=YOUR_AZURE_CLIENT_SECRET
+GRAPH_TENANT_ID=common
+GRAPH_REDIRECT_URI=https://YOUR_APP_NAME.sliplane.app/oauth/callback
+
+# ----------------------------------------------------------------------------
+# GENERATED LATER (Add after first successful deploy)
+# ----------------------------------------------------------------------------
+
+MATRIX_BOT_TOKEN=GENERATE_AFTER_DEPLOY
+AS_TOKEN_OUTLOOK=GENERATE_AFTER_DEPLOY
+HS_TOKEN_OUTLOOK=GENERATE_AFTER_DEPLOY
+
+# ============================================================================
+# INSTRUCTIONS
+# ============================================================================
+#
+# 1. REPLACE "YOUR_APP_NAME" with your actual Sliplane app domain
+#    Example: inboxforge.sliplane.app
+#
+# 2. START WITH JUST THE FIRST 2 VARIABLES
+#    The app will run with just these
+#
+# 3. ADD AI & OUTLOOK LATER
+#    Get OpenAI key from: https://platform.openai.com/api-keys
+#    Get Azure credentials from: https://portal.azure.com
+#
+# 4. GENERATE TOKENS AFTER DEPLOY
+#    Follow instructions in SLIPLANE_ENV_GUIDE.md
+#
+# ============================================================================
+# SLIPLANE CONFIGURATION STEPS
+# ============================================================================
+#
+# In Sliplane Dashboard:
+# 1. Select your app
+# 2. Go to "Environment" or "Settings" → "Environment Variables"
+# 3. Add each variable as: NAME=VALUE
+# 4. Save changes
+# 5. Redeploy the application
+#
+# ============================================================================
+
