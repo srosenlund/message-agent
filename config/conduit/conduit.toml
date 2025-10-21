@@ -1,0 +1,43 @@
+# Conduit Configuration for InboxForge AIO
+
+[global]
+# Server name (set via ENV: MATRIX_SERVER_NAME)
+server_name = "${MATRIX_SERVER_NAME}"
+
+# Database backend
+database_backend = "rocksdb"
+database_path = "/data/conduit"
+db_cache_capacity_mb = 256
+
+# Network
+address = "0.0.0.0"
+port = 6167
+max_request_size = 20_000_000  # 20 MB
+
+# Federation (disabled for single-user)
+allow_federation = false
+allow_registration = true
+registration_token = "${REGISTRATION_TOKEN}"
+
+# Appservice support
+appservice_registrations = ["/data/appservices/*.yaml"]
+
+# Performance
+max_concurrent_requests = 100
+trusted_servers = []
+
+# Logging
+log_level = "info"
+
+# Admin contact
+server_notice_avatar_url = ""
+server_notice_display_name = "InboxForge Server"
+
+# Turn off presence (saves resources)
+allow_outgoing_read_receipts = true
+allow_local_presence = false
+allow_incoming_presence = false
+
+# Cleanup
+cleanup_second_interval = 3600  # 1 hour
+

@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  inboxforge:
+    build: .
+    container_name: inboxforge-aio
+    ports:
+      - "8080:8080"    # Nginx (web + API + Matrix)
+      - "6167:6167"    # Conduit direct access (optional)
+    volumes:
+      - ./data/conduit:/data/conduit
+      - ./data/appservices:/data/appservices
+      - ./data/bridges:/data/bridges
+      - ./data/matrix-state:/data/matrix-state
+    environment:
+      # Matrix
+      - MATRIX_SERVER_NAME=${MATRIX_SERVER_NAME:-localhost}
+      - REGISTRATION_TOKEN=${REGISTRATION_TOKEN:-change-me}
+      
+      # API
+      - API_PORT=3000
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4-turbo-preview}
+      - MATRIX_BOT_TOKEN=${MATRIX_BOT_TOKEN}
+      - MATRIX_HOMESERVER_URL=http://localhost:6167
+      - BRIDGE_OUTLOOK_URL=http://localhost:9000
+      
+      # Bridge
+      - BRIDGE_PORT=9000
+      - GRAPH_CLIENT_ID=${GRAPH_CLIENT_ID}
+      - GRAPH_CLIENT_SECRET=${GRAPH_CLIENT_SECRET}
+      - GRAPH_TENANT_ID=${GRAPH_TENANT_ID:-common}
+      - GRAPH_REDIRECT_URI=${GRAPH_REDIRECT_URI}
+      - AS_TOKEN_OUTLOOK=${AS_TOKEN_OUTLOOK}
+      - HS_TOKEN_OUTLOOK=${HS_TOKEN_OUTLOOK}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+

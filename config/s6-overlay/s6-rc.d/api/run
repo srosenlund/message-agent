@@ -1,0 +1,6 @@
+#!/command/execlineb -P
+with-contenv
+cd /app/api
+s6-setuidgid nobody
+/usr/bin/node index.js
+
