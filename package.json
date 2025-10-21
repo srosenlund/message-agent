@@ -1,0 +1,52 @@
+{
+  "name": "inboxforge-aio",
+  "version": "1.0.0",
+  "description": "InboxForge AIO - All-in-One Matrix-powered email client with AI drafts",
+  "private": true,
+  "workspaces": [
+    "apps/api",
+    "apps/bridge-outlook",
+    "apps/web"
+  ],
+  "scripts": {
+    "install:all": "npm install && npm install --workspace=apps/api && npm install --workspace=apps/bridge-outlook && npm install --workspace=apps/web",
+    "build": "npm run build --workspace=apps/web",
+    "build:api": "echo 'API build not required (Node.js)'",
+    "build:bridge": "echo 'Bridge build not required (Node.js)'",
+    "build:web": "npm run build --workspace=apps/web",
+    "dev": "concurrently \"npm run dev --workspace=apps/api\" \"npm run dev --workspace=apps/web\"",
+    "dev:api": "npm run dev --workspace=apps/api",
+    "dev:web": "npm run dev --workspace=apps/web",
+    "dev:bridge": "npm run start --workspace=apps/bridge-outlook",
+    "lint": "npm run lint --workspace=apps/web --if-present || echo 'No linter configured'",
+    "test": "npm run test --workspace=apps/web --if-present || echo 'No tests configured'",
+    "test:e2e": "npm run test:e2e --workspace=apps/web --if-present || echo 'No E2E tests configured'",
+    "docker:build": "docker build -t inboxforge-aio .",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f"
+  },
+  "keywords": [
+    "matrix",
+    "email",
+    "outlook",
+    "openai",
+    "ai",
+    "inbox",
+    "pwa"
+  ],
+  "author": "Stefan Rosenlund <mail@stefanrosenlund.dk>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/srosenlund/message-agent.git"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
+
